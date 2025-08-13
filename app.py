@@ -2049,6 +2049,25 @@ async def aianalyst(request: Request):
         media_type="application/json"
     )
 
+@app.get("/")
+async def welcome():
+    """Welcome endpoint for the Data Analyst API"""
+    return {
+        "message": "Welcome to Data Analyst",
+        "status": "active",
+        "version": "1.0.0",
+        "endpoints": {
+            "main_analysis": "/aianalyst/",
+            "health_check": "/"
+        },
+        "description": "AI-powered data analysis service supporting CSV, PDF, HTML, JSON, and web scraping"
+    }
+
+@app.get("/health")
+async def health_check():
+    """Health check endpoint"""
+    return {"status": "healthy", "message": "Data Analyst service is running"}
+
 
 
 
